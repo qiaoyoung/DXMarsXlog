@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   # 基础信息配置
   spec.name         = "DXMarsXlog"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.summary      = "Tencent's mars-xlog."
   spec.description  = "A wrapper for Tencent's mars-xlog."
   spec.homepage     = "https://github.com/qiaoyoung/DXMarsXlog"
@@ -22,7 +22,7 @@ Pod::Spec.new do |spec|
   
   # 资源文件
   spec.resource_bundles = {
-    'DXMarsXlog' => ['Sources/*.xcprivacy']
+    'DXMarsXlog' => ['DXMarsXlog/Sources/*.xcprivacy']
   }
   
   # 系统依赖
@@ -41,7 +41,4 @@ Pod::Spec.new do |spec|
   spec.user_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 x86_64 i386'
   }
-  
-  # Swift 兼容性设置
-  spec.swift_version = '5.0'
 end
