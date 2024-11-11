@@ -1,27 +1,35 @@
 Pod::Spec.new do |spec|
+  # 基础信息配置
   spec.name         = "DXMarsXlog"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "Tencent's mars-xlog."
   spec.description  = "A wrapper for Tencent's mars-xlog."
   spec.homepage     = "https://github.com/qiaoyoung/DXMarsXlog"
   spec.license      = { :type => 'MIT', :file => 'LICENSE' }
   spec.author       = { "Joe" => "393098486@qq.com" }
-  spec.source       = { :git => "https://github.com/qiaoyoung/DXMarsXlog.git", :tag => "#{spec.version}" }
+  spec.source       = { 
+    :git => "https://github.com/qiaoyoung/DXMarsXlog.git", 
+    :tag => spec.version.to_s 
+  }
   
   # 平台设置
-  spec.platform = :ios, '12.0'
   spec.ios.deployment_target = '12.0'
-  
-  # 系统依赖
-  spec.libraries = ['resolv.9', 'z', 'c++']
-  spec.frameworks = ['SystemConfiguration', 'CoreTelephony']
-  
+
   # 源文件设置
   spec.source_files = 'DXMarsXlog/*.{h,m,mm}'
   spec.public_header_files = 'DXMarsXlog/*.h'
   spec.vendored_frameworks = 'DXMarsXlog/mars.framework'
   
-  # 编译设置
+  # 资源文件
+  spec.resource_bundles = {
+    'DXMarsXlog' => ['Sources/*.xcprivacy']
+  }
+  
+  # 系统依赖
+  spec.frameworks = ['SystemConfiguration', 'CoreTelephony']
+  spec.libraries = ['resolv.9', 'z', 'c++']
+  
+  # 编译设置 - 针对真机调试优化
   spec.pod_target_xcconfig = {
     'VALID_ARCHS[sdk=iphoneos*]' => 'arm64',
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 x86_64 i386',
@@ -29,7 +37,11 @@ Pod::Spec.new do |spec|
     'OTHER_LDFLAGS' => '-lresolv.9 -lz'
   }
   
+  # 用户target配置 - 禁用模拟器
   spec.user_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 x86_64 i386'
   }
+  
+  # Swift 兼容性设置
+  spec.swift_version = '5.0'
 end
