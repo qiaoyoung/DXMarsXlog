@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   # 基础信息配置
   spec.name         = "DXMarsXlog"
-  spec.version      = "1.0.2"
+  spec.version      = "1.0.3"
   spec.summary      = "Tencent's mars-xlog."
   spec.description  = "A wrapper for Tencent's mars-xlog."
   spec.homepage     = "https://github.com/qiaoyoung/DXMarsXlog"

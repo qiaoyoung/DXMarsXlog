@@ -93,7 +93,7 @@ static NSUInteger g_processID = 0;
     config.compress_mode_ = mars::xlog::kZlib;
     config.compress_level_ = 0;
     config.cachedir_ = "";
-    config.cache_days_ = 0;
+    config.cache_days_ = 7;
     appender_open(config);
 }
 
